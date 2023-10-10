@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
-ip=$(ip -6 -o route show | awk '/default/ {print $3}')
 ip=$(ip route | awk '/default/ {print $3}')
+
+if [ "$ip" == "" ]
+then
+    ip=$(ip -6 -o route show | awk '/default/ {print $3}')
+fi
 
 mtuMin=20
 mtuMax=65536
