@@ -7,7 +7,7 @@ then
     ip=$(ip -6 -o route show | awk '/default/ {print $3}')
 fi
 
-mtuMin=20
+mtuMin=28
 mtuMax=65536
 
 if ! type -P ping > /dev/null
@@ -74,9 +74,9 @@ for arg in "$@"; do
   esac
 done
 
-if [ "$mtuMin" -le 20 ]
+if [ "$mtuMin" -le 28 ]
 then
-    mtuMin=20
+    mtuMin=28
 fi
 
 main
